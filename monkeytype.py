@@ -1,4 +1,3 @@
-
 import pyautogui
 import pytesseract
 import cv2
@@ -10,12 +9,12 @@ try:
     while True:
         
         #STEP 1 (GET SCREENSHOT)
-        go = pyautogui.screenshot(region=(141,436,1600,200))
-        go.save("hi.png")
+        go = pyautogui.screenshot(region=(0,280,1400,200))
+        go.save("rawimg.png")
 
-        #STEP 2(EXTRACT TEXT)
+        # STEP 2(EXTRACT TEXT)
 
-        img = cv2.imread("hi.png")
+        img = cv2.imread("rawimg.png")
         pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
         word = pytesseract.image_to_string(img)
@@ -37,7 +36,7 @@ try:
         print(final_word)
 
         #STEP 3 (TYPE TEXT)
-        Type_Speed = 0.06
+        Type_Speed = 0.03
 
         pyautogui.write(str(final_word), interval=Type_Speed)
         
@@ -51,4 +50,5 @@ try:
         time.sleep(0.5)
         
 except KeyboardInterrupt:
+    print('\n')
     print('\n')
